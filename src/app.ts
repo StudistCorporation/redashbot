@@ -3,20 +3,13 @@ import { Browser } from './browser'
 import { Config } from './config'
 import {
   Handler,
-  handleRecordChart,
   handleRecordDashboard,
-  handleRecordDashboardLegacy,
-  handleRecordTable,
 } from './handlers'
 import { mention } from './middleware'
 import { Redash } from './redash'
 
 const handlers: [path: string, handler: Handler][] = [
-  [`/queries/([0-9]+)#([0-9]+)`, handleRecordChart],
-  [`/dashboard/([^?/|>]+)`, handleRecordDashboardLegacy],
-  [`/dashboards/(\\d+)-([^?/|>]+)`, handleRecordDashboard],
-  [`/queries/([0-9]+)#table`, handleRecordTable],
-  [`/queries/([0-9]+)>?$`, handleRecordTable],
+  [`/dashboards/(\\d+)--redashbot-([^?/|>]+)`, handleRecordDashboard],
 ]
 
 export function createApp(config: Config & AppOptions) {
