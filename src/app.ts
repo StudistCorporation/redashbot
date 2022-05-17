@@ -3,13 +3,13 @@ import { Browser } from './browser'
 import { Config } from './config'
 import {
   Handler,
-  handleRecordDashboard,
+  handleRecordChart,
 } from './handlers'
 import { mention } from './middleware'
 import { Redash } from './redash'
 
 const handlers: [path: string, handler: Handler][] = [
-  [`/dashboards/(\\d+)--redashbot-([^?/|>]+)`, handleRecordDashboard],
+  [`/queries/([0-9]+)#([0-9]+)`, handleRecordChart],
 ]
 
 export function createApp(config: Config & AppOptions) {
